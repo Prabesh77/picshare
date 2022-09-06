@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { RiHomeFill } from 'react-icons/ri';
 import { IoIosArrowForward } from 'react-icons/io';
+import { MdSaveAlt } from 'react-icons/md'
 import logo_ from '../assets/logo_.png';
 import { categories } from '../utils/data';
 
@@ -33,7 +34,15 @@ const Sidebar = ({ closeToggle, user }) => {
             <RiHomeFill />
             Home
           </NavLink>
-          <h3 className="mt-2 px-5 text-base 2xl:text-xl">Cateogries</h3>
+          <NavLink
+            to="/saved"
+            className={({ isActive }) => (isActive ? isActiveStyle : isNotActiveStyle)}
+            onClick={handleCloseSidebar}
+          >
+            <MdSaveAlt />
+            Saved
+          </NavLink>
+          {/* <h3 className="mt-2 px-5 text-base 2xl:text-xl">Cateogries</h3>
           {categories.slice(0, categories.length - 1).map((category) => (
             <NavLink
               to={`/category/${category.name}`}
@@ -44,7 +53,7 @@ const Sidebar = ({ closeToggle, user }) => {
               <img src={category.image} className="w-8 h-8 rounded-full shadow-sm" />
               {category.name}
             </NavLink>
-          ))}
+          ))} */}
         </div>
       </div>
       {user && (

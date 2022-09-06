@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { Navbar, Feed, PinDetail, CreatePin, Search } from '../components';
+import Saved from '../components/Saved';
 
 const Pins = ({ user }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -14,6 +15,7 @@ const Pins = ({ user }) => {
       <div className="h-full">
         <Routes>
           <Route path="/" element={<Feed />} />
+          <Route path="/saved" element={<Saved />} />
           <Route path="/category/:categoryId" element={<Feed />} />
           <Route path="/pin-detail/:pinId" element={<PinDetail user={user && user} />} />
           <Route path="/create-pin" element={<CreatePin user={user && user} />} />
