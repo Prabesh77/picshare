@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { client } from '../client';
 import { feedQuery, searchQuery } from '../utils/data';
+import Loader from './common/Loader';
 import MasonryLayout from './MasonryLayout';
 import Spinner from './Spinner';
 
@@ -34,11 +35,12 @@ const Feed = () => {
       <Spinner message={`We are adding ${ideaName} ideas to your feed!`} />
     );
   }
+ 
   return (
     <div>
-      {pins && (
+      {pins?.length ? (
         <MasonryLayout pins={pins} />
-      )}
+      ): <div className='h-full w-full flex items-center justify-center mt-20'><p className='text-center text-3xl py-8 text-gray-400'>{`No ${ideaName} ideas found!`}</p></div>}
     </div>
   );
 };

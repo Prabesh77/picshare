@@ -5,6 +5,7 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { MdSaveAlt } from 'react-icons/md'
 import logo_ from '../assets/logo_.png';
 import { categories } from '../utils/data';
+import PlaceholderImg from '../../src/assets/logo.png'
 
 const isNotActiveStyle = 'flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize';
 const isActiveStyle = 'flex items-center px-5 gap-3 font-extrabold border-r-2 border-black  transition-all duration-200 ease-in-out capitalize';
@@ -13,6 +14,7 @@ const Sidebar = ({ closeToggle, user }) => {
   const handleCloseSidebar = () => {
     if (closeToggle) closeToggle(false);
   };
+
 
   return (
     <div className="flex flex-col justify-between bg-white h-full overflow-y-scroll min-w-210 hide-scrollbar">
@@ -62,8 +64,8 @@ const Sidebar = ({ closeToggle, user }) => {
           className="flex my-5 mb-3 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3"
           onClick={handleCloseSidebar}
         >
-          <img src={user.image} className="w-10 h-10 rounded-full" alt="user-profile" />
-          <p>{user.userName}</p>
+          <img src={user?.image || PlaceholderImg} className="w-10 h-10 rounded-full" alt="user-profile" />
+          <p className='capitalize'>{user.userName}</p>
           <IoIosArrowForward />
         </Link>
       )}

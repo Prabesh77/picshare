@@ -10,7 +10,7 @@ const Navbar = ({ searchTerm, setSearchTerm, user }) => {
     return (
       <>
         <div className="flex gap-2 md:gap-5 w-full mt-5 pb-3 ">
-          <div className="flex justify-start items-center w-full px-2 rounded-md bg-white border-none outline-none focus-within:shadow-sm">
+          <div className="flex justify-start items-center w-full px-2 rounded-md bg-gray-200 border-none outline-none focus-within:shadow-sm">
             <IoMdSearch fontSize={21} className="ml-1" />
             <input
               type="text"
@@ -18,7 +18,7 @@ const Navbar = ({ searchTerm, setSearchTerm, user }) => {
               placeholder="Search"
               value={searchTerm}
               onFocus={() => navigate("/search")}
-              className="p-2 w-full bg-white outline-none"
+              className="p-2 w-full bg-gray-200 outline-none"
             />
           </div>
           <div className="flex gap-3 ">
@@ -26,7 +26,7 @@ const Navbar = ({ searchTerm, setSearchTerm, user }) => {
               <img
                 src={user.image}
                 alt="user-pic"
-                className="w-14 h-12 rounded-lg "
+                className="w-12 h-12 rounded-full "
               />
             </Link>
             <Link

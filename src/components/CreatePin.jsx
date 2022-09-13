@@ -6,6 +6,8 @@ import { MdDelete } from 'react-icons/md';
 import { categories } from '../utils/data';
 import { client } from '../client';
 import Spinner from './Spinner';
+import Toast from './common/Toast';
+import toast from 'react-hot-toast';
 
 const CreatePin = ({ user }) => {
   const [title, setTitle] = useState('');
@@ -75,34 +77,37 @@ const CreatePin = ({ user }) => {
       );
     }
   };
+  fields && toast.error('Please fill fields!')
+  wrongImageType && toast.error('Wrong image type!')
   return (
     <div className="flex flex-col justify-center items-center mt-5 lg:h-4/5">
-      {fields && (
+      {/* {fields && (
         <p className="text-red-500 mb-5 text-xl transition-all duration-150 ease-in ">Please add all fields.</p>
-      )}
+      )} */}
       <div className=" flex lg:flex-row flex-col justify-center items-center bg-white lg:p-5 p-3 lg:w-4/5  w-full">
         <div className="bg-secondaryColor p-3 flex flex-0.7 w-full">
-          <div className=" flex justify-center items-center flex-col border-2 border-dotted border-gray-300 p-3 w-full h-420">
+          <div className=" flex justify-center items-center flex-col border-2 border-dotted border-gray-800 p-3 w-full h-420">
             {loading && (
               <Spinner />
             )}
             {
-              wrongImageType && (
-                <p>It&apos;s wrong file type.</p>
-              )
+              wrongImageType ? (
+                <><p className='text-red-500 font-semibold'>It&apos;s wrong file type!</p> </>
+                
+              ): null
             }
             {!imageAsset ? (
               // eslint-disable-next-line jsx-a11y/label-has-associated-control
               <label>
                 <div className="flex flex-col items-center justify-center h-full">
                   <div className="flex flex-col justify-center items-center">
-                    <p className="font-bold text-2xl">
+                    <p className="font-bold text-5xl">
                       <AiOutlineCloudUpload />
                     </p>
                     <p className="text-lg">Click to upload</p>
                   </div>
 
-                  <p className="mt-32 text-gray-400">
+                  <p className="mt-20 text-center  text-gray-400">
                     Recommendation: Use high-quality JPG, JPEG, SVG, PNG, GIF or TIFF less than 20MB
                   </p>
                 </div>
@@ -132,24 +137,15 @@ const CreatePin = ({ user }) => {
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col gap-6 lg:pl-5 mt-5 w-full">
+        <div className="flex flex-1 flex-col gap-6 lg:pl-5 mt-2 w-full">
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Add your title"
-            className="outline-none text-2xl sm:text-3xl font-bold border-b-2 border-gray-200 p-2"
+            className="outline-none text-xl sm:text-3xl font-bold border-b-2 border-gray-200 p-2"
           />
-          {user && (
-            <div className="flex gap-2 mt-2 mb-2 items-center bg-white rounded-lg ">
-              <img
-                src={user.image}
-                className="w-10 h-10 rounded-full"
-                alt="user-profile"
-              />
-              <p className="font-bold">{user.userName}</p>
-            </div>
-          )}
+         
           <input
             type="text"
             value={about}
@@ -182,15 +178,25 @@ const CreatePin = ({ user }) => {
                 ))}
               </select>
             </div>
-            <div className="flex justify-end items-end mt-5">
+            <div className="flex justify-start items-end mt-5">
               <button
                 type="button"
                 onClick={savePin}
-                className="bg-red-500 text-white font-bold p-2 rounded-full w-28 outline-none"
+                className="bg-red-600 text-white font-semibold p-2 rounded-sm px-8 outline-none"
               >
                 Save Pin
               </button>
             </div>
+            {user && (
+            <div className="flex gap-2 mt-8 items-center bg-white rounded-lg ">
+              <img
+                src={user.image}
+                className="w-8 h-8 rounded-full"
+                alt="user-profile"
+              />
+              <p className="font-semibold capitalize">{user.userName}</p>
+            </div>
+          )}
           </div>
         </div>
       </div>

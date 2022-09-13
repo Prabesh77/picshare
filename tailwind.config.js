@@ -46,6 +46,7 @@ module.exports = {
       },
       backgroundColor: {
         mainColor: '#FBF8F9',
+        // mainColor: '#271c68',
         secondaryColor: '#F0F0F0',
         blackOverlay: 'rgba(0, 0 ,0 ,0.7)',
       },

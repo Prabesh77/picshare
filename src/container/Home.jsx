@@ -8,6 +8,7 @@ import { userQuery } from '../utils/data';
 import { client } from '../client';
 import Pins from './Pins';
 import logo from '../assets/logo_.png';
+import Loader from '../components/common/Loader';
 
 const Home = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
