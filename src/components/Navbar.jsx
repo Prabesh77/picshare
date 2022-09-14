@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, NavLink, useNavigate } from "react-router-dom"
 import { IoMdAdd, IoMdSearch } from "react-icons/io"
+import { FaUserCircle } from 'react-icons/fa'
 import { categories } from "../utils/data"
 
 const Navbar = ({ searchTerm, setSearchTerm, user }) => {
@@ -21,13 +22,15 @@ const Navbar = ({ searchTerm, setSearchTerm, user }) => {
               className="p-2 w-full bg-gray-200 outline-none"
             />
           </div>
-          <div className="flex gap-3 ">
+          <div className="flex items-center gap-3 ">
             <Link to={`user-profile/${user?._id}`} className="hidden md:block">
-              <img
-                src={user.image}
+              {user?.image ?  <img
+                src={user.image }
                 alt="user-pic"
                 className="w-12 h-12 rounded-full "
-              />
+              />:  <FaUserCircle className="text-5xl text-red-500"/>}
+             
+            
             </Link>
             <Link
               to="/create-pin"

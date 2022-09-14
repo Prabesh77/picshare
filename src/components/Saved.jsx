@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 
 import { client } from "../client"
 import { feedQuery, searchQuery, userSavedPinsQuery } from "../utils/data"
+import PulseLoader from "./common/PulseLoader"
 import MasonryLayout from "./MasonryLayout"
 import Spinner from "./Spinner"
 
@@ -22,7 +23,8 @@ const Saved = () => {
     })
   }, [])
   if (loading) {
-    return <Spinner message={`We are adding ideas to your feed!`} />
+    // return <Spinner message={`We are adding ideas to your feed!`} />
+    return <PulseLoader />
   }
   return <div>{pins && <MasonryLayout pins={pins} />}</div>
 }

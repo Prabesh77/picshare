@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { useParams, useNavigate } from 'react-router-dom';
 import { GoogleLogout } from 'react-google-login';
+import Cover from '../assets/cover.jpeg'
 
 import { userCreatedPinsQuery, userQuery, userSavedPinsQuery } from '../utils/data';
 import { client } from '../client';
 import MasonryLayout from './MasonryLayout';
 import Spinner from './Spinner';
+import { FaUserCircle } from 'react-icons/fa';
 
-const activeBtnStyles = 'bg-red-500 text-white font-bold p-2 rounded-full w-20 outline-none';
-const notActiveBtnStyles = 'bg-primary mr-4 text-black font-bold p-2 rounded-full w-20 outline-none';
+const activeBtnStyles = 'bg-red-500 text-white font-semibold py-2 px-4 rounded-md outline-none';
+const notActiveBtnStyles = 'bg-primary mr-4 text-black font-bold py-2 px-4 rounded-full outline-none';
 
 const UserProfile = () => {
   const [user, setUser] = useState();
@@ -58,17 +60,23 @@ const UserProfile = () => {
         <div className="relative flex flex-col mb-7">
           <div className="flex flex-col justify-center items-center">
             <img
-              className=" w-full h-370 2xl:h-510 shadow-lg object-cover"
-              src="https://source.unsplash.com/1600x900/?nature,photography,technology"
+              className=" w-full h-96 2xl:h-96 shadow-lg object-cover"
+              // src="https://source.unsplash.com/1600x900/?nature,photography,technology"
+              src={Cover}
               alt="user-pic"
             />
-            <img
-              className="rounded-full w-20 h-20 -mt-10 shadow-xl object-cover"
+             {user?.image  ?  <img
+                src={user?.image  }
+                alt="user-pic"
+                className="w-20 h-20 rounded-full "
+              />:  <FaUserCircle className="text-8xl text-red-500"/>}
+            {/* <img
+              className="rounded-full w-20 h-20 -mt-10 shadow-xl object-cover border border-white"
               src={user.image}
               alt="user-pic"
-            />
+            /> */}
           </div>
-          <h1 className="font-bold text-3xl text-center mt-3">
+          <h1 className="font-bold text-3xl text-center mt-3 capitalize">
             {user.userName}
           </h1>
           <div className="absolute top-0 z-1 right-0 p-2">

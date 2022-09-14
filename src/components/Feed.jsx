@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { client } from '../client';
 import { feedQuery, searchQuery } from '../utils/data';
 import Loader from './common/Loader';
+import PulseLoader from './common/PulseLoader';
 import MasonryLayout from './MasonryLayout';
 import Spinner from './Spinner';
 
@@ -32,7 +33,8 @@ const Feed = () => {
   const ideaName = categoryId || 'new';
   if (loading) {
     return (
-      <Spinner message={`We are adding ${ideaName} ideas to your feed!`} />
+      // <Spinner message={`We are adding ${ideaName} ideas to your feed!`} />
+      <PulseLoader />
     );
   }
  

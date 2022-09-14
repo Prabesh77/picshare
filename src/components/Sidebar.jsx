@@ -6,6 +6,7 @@ import { MdSaveAlt } from 'react-icons/md'
 import logo_ from '../assets/logo_.png';
 import { categories } from '../utils/data';
 import PlaceholderImg from '../../src/assets/logo.png'
+import { FaUserCircle } from 'react-icons/fa';
 
 const isNotActiveStyle = 'flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize';
 const isActiveStyle = 'flex items-center px-5 gap-3 font-extrabold border-r-2 border-black  transition-all duration-200 ease-in-out capitalize';
@@ -64,7 +65,12 @@ const Sidebar = ({ closeToggle, user }) => {
           className="flex my-5 mb-3 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3"
           onClick={handleCloseSidebar}
         >
-          <img src={user?.image || PlaceholderImg} className="w-10 h-10 rounded-full" alt="user-profile" />
+           {user?.image  ?  <img
+                src={user?.image  }
+                alt="user-pic"
+                className="w-10 h-10 rounded-full "
+              />:  <FaUserCircle className="text-4xl text-red-500"/>}
+          {/* <img src={user?.image || PlaceholderImg} className="w-10 h-10 rounded-full" alt="user-profile" /> */}
           <p className='capitalize'>{user.userName}</p>
           <IoIosArrowForward />
         </Link>
